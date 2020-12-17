@@ -9,7 +9,7 @@ public interface ClientService {
     List<ClientEntity> getAllEntity();
     ClientEntity getEntityById(long id);
     ClientEntity addClient(ClientEntity entity);
-    ClientEntity updateClient(long id ,ClientEntity newEntity);
+    ClientEntity updateClient(long id , ClientEntity newEntity);
     String deleteClient(long id );
 
 

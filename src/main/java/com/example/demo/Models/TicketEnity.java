@@ -1,6 +1,5 @@
 package com.example.demo.Models;
 
-import com.example.demo.Models.Met.MetEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,11 +26,11 @@ public class TicketEnity {
     private TableEntity table;
 
     @ManyToOne
-    private ClientEntity client;
+    private MetEntity client;
 
     @ManyToMany(mappedBy = "tickets")
     @JsonIgnore
-    private List<MetEntity> mets;
+    private List<com.example.demo.Models.Met.MetEntity> mets;
 
 
 }
