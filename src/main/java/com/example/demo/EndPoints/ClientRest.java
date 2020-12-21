@@ -1,4 +1,5 @@
 package com.example.demo.EndPoints;
+import com.example.demo.DTO.Client.ClientReponse;
 import com.example.demo.Models.ClientEntity;
 import com.example.demo.Services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +26,12 @@ public class ClientRest {
     }
 
     @GetMapping("/{id}")
-    public ClientEntity getById(@PathVariable("id") long id){
+    public ClientReponse getById(@PathVariable("id") long id){
         return clientService.getEntityById(id);
     }
 
     @PostMapping
-    public ClientEntity addClient(@RequestBody ClientEntity client){
+    public ClientReponse addClient(@RequestBody ClientRequest client){
         return clientService.addClient(client);
     }
     @DeleteMapping("/{id}")

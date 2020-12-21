@@ -1,9 +1,10 @@
 package com.example.demo.Services;
 
+import com.example.demo.DTO.Client.ClientReponse;
 import com.example.demo.Models.ClientEntity;
 import com.example.demo.Reposetories.ClientRepository;
 import org.springframework.stereotype.Service;
-
+import org.modelmapper.ModelMapper;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -11,6 +12,7 @@ import java.util.Optional;
 public class ClientServiceImpl implements  ClientService{
 
     private ClientRepository clietnRepository;
+    private ModelMapper mapper=new ModelMapper ;
 
     public ClientServiceImpl(ClientRepository clietnRebository) {
         super();
@@ -23,19 +25,19 @@ public class ClientServiceImpl implements  ClientService{
     }
 
     @Override
-    public ClientEntity getEntityById(long id) {
+    public ClientReponse getEntityById(long id) {
         Optional<ClientEntity> opt = clietnRepository.findById(id);
         ClientEntity entity;
         if (opt.isPresent())
             entity = opt.get();
         else
             throw new NoSuchElementException("Client with this Id is not found");
-        return entity;
+        return mapper.map(entity,ClientReponse.class);
 
     }
 
     @Override
-    public ClientEntity addClient(ClientEntity entity) {
+    public ClientReponse addClient(ClientRequest entity) {
         return clietnRepository.save(entity);
     }
 
