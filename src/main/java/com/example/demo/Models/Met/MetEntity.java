@@ -1,6 +1,6 @@
 package com.example.demo.Models.Met;
 
-import com.example.demo.Models.TicketEnity;
+import com.example.demo.Models.TicketEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,5 +22,5 @@ public class MetEntity {
 
     @ManyToMany
     @JoinTable(name = "compose")
-    private List<TicketEnity> tickets;
+    private List<TicketEntity> tickets;
 }

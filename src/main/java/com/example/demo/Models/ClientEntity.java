@@ -24,7 +24,7 @@ public class ClientEntity {
     private String telephone;
 
     @OneToMany(mappedBy = "client")
-    private List<TicketEnity> tickets;
+    private List<TicketEntity> tickets;
 
 
 

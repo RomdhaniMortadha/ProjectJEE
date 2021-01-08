@@ -1,6 +1,6 @@
 package com.example.demo.EndPoints;
 
-import com.example.demo.Models.TicketEnity;
+import com.example.demo.Models.TicketEntity;
 import com.example.demo.Services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

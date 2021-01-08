@@ -1,29 +1,33 @@
 package com.example.demo.Services;
-
 import com.example.demo.DTO.Client.ClientReponse;
+import com.example.demo.DTO.Client.ClietnRequest;
 import com.example.demo.Models.ClientEntity;
-import com.example.demo.Reposetories.ClientRepository;
-import org.springframework.stereotype.Service;
+import com.example.demo.Reposetories.ClientRep;
 import org.modelmapper.ModelMapper;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import org.springframework.stereotype.Service;
+import java.util.*;
+
 @Service
 public class ClientServiceImpl implements  ClientService{
+    private ModelMapper mapper=new ModelMapper();
+    private ClientRep clietnRepository;
 
-    private ClientRepository clietnRepository;
-    private ModelMapper mapper=new ModelMapper ;
-
-    public ClientServiceImpl(ClientRepository clietnRebository) {
+    public ClientServiceImpl(ClientRep clietnRepository) {
         super();
-        this.clietnRepository = clietnRebository;
+        this.clietnRepository = clietnRepository;
     }
 
     @Override
-    public List<ClientEntity> getAllEntity() {
-        return  clietnRepository.findAll();
-    }
+    public List<ClientReponse> getAllEntity() {
 
+        List<ClientEntity> clients = clietnRepository.findAll();
+        List<ClientReponse> reponse = new ArrayList<>();
+        for (ClientEntity client : clients) {
+            reponse.add(mapper.map(client, ClientReponse.class));
+        }
+
+        return reponse;
+    }
     @Override
     public ClientReponse getEntityById(long id) {
         Optional<ClientEntity> opt = clietnRepository.findById(id);
@@ -37,13 +41,24 @@ public class ClientServiceImpl implements  ClientService{
     }
 
     @Override
-    public ClientReponse addClient(ClientRequest entity) {
-        return clietnRepository.save(entity);
+    public ClientReponse addClient(ClietnRequest entityreq) {
+
+        ClientEntity clientRequest=mapper.map(entityreq,ClientEntity.class);
+        clientRequest.setNom(clientRequest.getNom().toUpperCase());
+        ClientEntity client=clietnRepository.save(clientRequest);
+
+        return mapper.map(client,ClientReponse.class);
     }
 
+
     @Override
-    public ClientEntity updateClient(long id, ClientEntity newEntity) {
-        ClientEntity client =this.getEntityById(id);
+    public ClientReponse updateClient(long id, ClietnRequest newEntityreq) {
+
+        ClientEntity newEntity =mapper.map(newEntityreq,ClientEntity.class );
+
+        ClientReponse clientrep =this.getEntityById(id);
+        ClientEntity client =mapper.map(clientrep,ClientEntity.class);
+
         if ( newEntity.getNom() != null)
             client.setNom(newEntity.getNom());
 
@@ -58,8 +73,8 @@ public class ClientServiceImpl implements  ClientService{
 
         if ( newEntity.getTelephone() != null)
             client.setTelephone(newEntity.getTelephone());
-
-        return client;
+        ClientEntity clientsv=clietnRepository.save(client);
+        return mapper.map(clientsv,ClientReponse.class);
     }
 
     @Override

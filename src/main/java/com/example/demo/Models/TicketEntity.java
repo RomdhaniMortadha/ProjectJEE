@@ -1,5 +1,6 @@
 package com.example.demo.Models;
 
+import com.example.demo.Models.Met.MetEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +14,7 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class TicketEnity {
+public class TicketEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id ;
@@ -26,11 +27,11 @@ public class TicketEnity {
     private TableEntity table;
 
     @ManyToOne
-    private MetEntity client;
+    private ClientEntity client;
 
     @ManyToMany(mappedBy = "tickets")
     @JsonIgnore
-    private List<com.example.demo.Models.Met.MetEntity> mets;
+    private List<MetEntity> mets;
 
 
 }

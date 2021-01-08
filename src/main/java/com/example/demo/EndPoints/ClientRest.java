@@ -1,5 +1,6 @@
 package com.example.demo.EndPoints;
 import com.example.demo.DTO.Client.ClientReponse;
+import com.example.demo.DTO.Client.ClietnRequest;
 import com.example.demo.Models.ClientEntity;
 import com.example.demo.Services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class ClientRest {
     }
 
     @GetMapping
-    public List<ClientEntity> getAll(){
+    public List<ClientReponse> getAll(){
         return clientService.getAllEntity();
     }
 
@@ -31,7 +32,7 @@ public class ClientRest {
     }
 
     @PostMapping
-    public ClientReponse addClient(@RequestBody ClientRequest client){
+    public ClientReponse addClient(@RequestBody ClietnRequest client){
         return clientService.addClient(client);
     }
     @DeleteMapping("/{id}")
@@ -39,7 +40,7 @@ public class ClientRest {
         return clientService.deleteClient( id);
     }
     @PostMapping("/{id}")
-    public ClientEntity updateClient(@PathVariable("id") long id, @RequestBody ClientEntity newClient) {
+    public ClientReponse updateClient(@PathVariable("id") long id, @RequestBody ClietnRequest newClient) {
         return clientService.updateClient(id, newClient);
     }
 

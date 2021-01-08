@@ -23,5 +23,5 @@ public class TableEntity {
     private float supplement;
 
     @OneToMany(mappedBy = "table",cascade = CascadeType.REMOVE)
-    private List<TicketEnity> tickets;
+    private List<TicketEntity> tickets;
 }

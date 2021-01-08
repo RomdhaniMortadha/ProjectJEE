@@ -1,6 +1,6 @@
 package com.example.demo.EndPoints;
 
-import com.example.demo.Reposetories.TableRebository;
+import com.example.demo.Reposetories.TableRepository;
 import com.example.demo.Services.TableService;
 import com.example.demo.Models.TableEntity;
 import org.springframework.beans.factory.annotation.Autowired;

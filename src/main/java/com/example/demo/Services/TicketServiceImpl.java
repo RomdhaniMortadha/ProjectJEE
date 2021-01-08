@@ -1,5 +1,5 @@
 package com.example.demo.Services;
-import com.example.demo.Models.TicketEnity;
+import com.example.demo.Models.TicketEntity;
 import com.example.demo.Reposetories.TicketRepository;
 import org.springframework.stereotype.Service;
 

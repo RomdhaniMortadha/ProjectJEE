@@ -1,5 +1,5 @@
 package com.example.demo.DTO.Client;
-import com.example.demo.Models.TicketEnity;
+import com.example.demo.Models.TicketEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,5 +18,5 @@ public class ClientReponse {
     private String courriel;
     private String telephone;
 
-    private List<TicketEnity> tickets;
+    private List<TicketEntity> tickets;
 }
