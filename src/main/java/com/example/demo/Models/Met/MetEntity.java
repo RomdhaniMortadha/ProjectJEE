@@ -1,6 +1,7 @@
 package com.example.demo.Models.Met;
 
 import com.example.demo.Models.TicketEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +21,7 @@ public class MetEntity {
     private String nom;
     private float prix;
 
-    @ManyToMany
-    @JoinTable(name = "compose")
+    @ManyToMany(mappedBy = "mets")
+    @JsonIgnore
     private List<TicketEntity> tickets;
 }

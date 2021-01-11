@@ -1,13 +1,11 @@
 package com.example.demo.EndPoints;
-
-import com.example.demo.Reposetories.TableRepository;
-import com.example.demo.Services.TableService;
-import com.example.demo.Models.TableEntity;
+import com.example.demo.DTO.Table.TableReponse;
+import com.example.demo.DTO.Table.TableRequest;
+import com.example.demo.Services.TableServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -15,26 +13,26 @@ import java.util.NoSuchElementException;
 @RequestMapping("/api/table")
 public class TableRest {
 
-    private TableService tableService;
+    private TableServiceImpl tableService;
 
     @Autowired
-    public TableRest(TableService tableService) {
+    public TableRest(TableServiceImpl tableService) {
         super();
         this.tableService = tableService;
     }
 
     @GetMapping
-    public List<TableEntity> getAll(){
+    public List<TableReponse> getAll(){
         return tableService.getAllEntity();
     }
 
     @GetMapping("/{id}")
-    public TableEntity getById(@PathVariable("id") long id){
+    public TableReponse getById(@PathVariable("id") long id){
         return tableService.getEntityById(id);
     }
 
     @PostMapping
-    public TableEntity addTable(@RequestBody TableEntity table){
+    public TableReponse addTable(@RequestBody TableRequest table){
         return tableService.addTable(table);
     }
     @DeleteMapping("/{id}")
@@ -42,7 +40,7 @@ public class TableRest {
         return tableService.deleteTable( id);
     }
     @PostMapping("/{id}")
-    public TableEntity updateTable(@PathVariable("id") long id, @RequestBody TableEntity newTable) {
+    public TableReponse updateTable(@PathVariable("id") long id, @RequestBody TableRequest newTable) {
         return tableService.updateTable(id, newTable);
     }
 

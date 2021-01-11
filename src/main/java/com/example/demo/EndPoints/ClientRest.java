@@ -1,8 +1,7 @@
 package com.example.demo.EndPoints;
 import com.example.demo.DTO.Client.ClientReponse;
 import com.example.demo.DTO.Client.ClietnRequest;
-import com.example.demo.Models.ClientEntity;
-import com.example.demo.Services.ClientService;
+import com.example.demo.Services.ClientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +12,10 @@ import java.util.NoSuchElementException;
 @RestController
 @RequestMapping("/api/client")
 public class ClientRest {
-    private ClientService clientService;
+    private ClientServiceImpl clientService;
 
     @Autowired
-    public ClientRest(ClientService clientService) {
+    public ClientRest(ClientServiceImpl clientService) {
         super();
         this.clientService = clientService;
     }

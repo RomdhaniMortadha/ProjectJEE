@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -19,18 +20,18 @@ public class TicketEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id ;
     private int numero;
-    private LocalDate date ;
+    private LocalDateTime date ;
     private int nbCouvert ;
     private float addition ;
 
-    @ManyToOne()
+    @ManyToOne
     private TableEntity table;
 
     @ManyToOne
     private ClientEntity client;
 
-    @ManyToMany(mappedBy = "tickets")
-    @JsonIgnore
+    @ManyToMany
+    @JoinTable(name = "compose")
     private List<MetEntity> mets;
 
 

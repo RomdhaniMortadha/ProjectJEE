@@ -1,10 +1,7 @@
 package com.example.demo.DTO.Client;
-
-import com.example.demo.Models.TicketEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -18,5 +15,5 @@ public class ClietnRequest {
     private String courriel;
     private String telephone;
 
-    private String tickets;
+ //   private String tickets;
 }

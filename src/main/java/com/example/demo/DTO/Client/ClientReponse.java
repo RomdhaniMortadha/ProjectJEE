@@ -11,12 +11,12 @@ import java.util.List;
 @NoArgsConstructor
 
 public class ClientReponse {
-
+    private long id ;
     private String nom;
     private String prenom;
     private LocalDate dateDeNaissance;
     private String courriel;
     private String telephone;
 
-    private List<TicketEntity> tickets;
+    //private List<TicketEntity> tickets;
 }
