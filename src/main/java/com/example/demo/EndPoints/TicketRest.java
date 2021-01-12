@@ -59,18 +59,15 @@ public class TicketRest {
     public ClientEntity ClientplusFidel(){
         return ticketService.ClientPlusFidel();
     }
-    @GetMapping("/revenue/period/{begin}/{end}")
-    public Double revenudansperiode(@PathVariable("begin") LocalDateTime begin, @PathVariable("end") LocalDateTime end){
-        return ticketService.revenudansperiode(begin, end);
-    }
-    @GetMapping("/client/reservedday/{id}")
-    public LocalDateTime JourPlusResrveduClient(@PathVariable("id")int id){
-        return ticketService.JourPlusResrve(id);
-    }
 
     @GetMapping("/plusreserved/table")
     public TableReponse TablePlusReserve(){
         return ticketService.TablePlusReserve();
+    }
+
+    @GetMapping("/client/reservedday/{id}")
+    public LocalDateTime JourPlusResrveduClient(@PathVariable("id")int id){
+        return ticketService.JourPlusResrve(id);
     }
 
     @GetMapping("/revenue/day")
@@ -88,8 +85,10 @@ public class TicketRest {
         return ticketService.RevenueDerniereMonths();
     }
 
-
-
+    @GetMapping("/revenue/period/{begin}/{end}")
+    public Double revenudansperiode(@PathVariable("begin") LocalDateTime begin, @PathVariable("end") LocalDateTime end){
+        return ticketService.revenudansperiode(begin, end);
+    }
 
 
 

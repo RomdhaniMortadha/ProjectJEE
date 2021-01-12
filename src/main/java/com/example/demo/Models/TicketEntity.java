@@ -1,13 +1,9 @@
 package com.example.demo.Models;
-
 import com.example.demo.Models.Met.MetEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -19,6 +15,7 @@ public class TicketEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id ;
+    @Column(unique = true,nullable = false)
     private int numero;
     private LocalDateTime date ;
     private int nbCouvert ;

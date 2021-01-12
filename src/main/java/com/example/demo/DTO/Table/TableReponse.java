@@ -1,10 +1,7 @@
 package com.example.demo.DTO.Table;
-
-import com.example.demo.Models.TicketEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -18,7 +15,6 @@ public class TableReponse {
     private String type;
     private float supplement;
 
-    //private List<TicketEntity> tickets;
 
 
 

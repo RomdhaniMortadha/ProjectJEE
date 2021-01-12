@@ -15,6 +15,5 @@ public class MetReponse {
     private String nom;
     private float prix;
 
-   // private List<TicketEntity> tickets;
 }
 
